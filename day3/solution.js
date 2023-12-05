@@ -9,5 +9,5 @@ fs.readFile('./input.txt','utf8',(err, data) => {
 fs.readFile('./input.txt','utf8',(err, data) => {
     let stars = {};
     data.split("\n").forEach((d, idx) =>{[...d.matchAll(/\d+/g)].forEach(e => {[idx,...(idx > 0)?[idx-1]:[],...(idx<d.length-1)?[idx+1]:[]].forEach(t =>{[...data.split("\n")[t].substring((e.index-1),(e.index+e[0].length+1)).matchAll(/\*/g)].forEach(s=>{stars[t+","+(e.index+s.index-(e.index == 0 ? 0 : 1))]?stars[t+","+(e.index+s.index-(e.index == 0 ? 0 : 1))].push(parseInt(e[0])):stars[t+","+(e.index+s.index-(e.index == 0 ? 0 : 1))]=[parseInt(e[0])]})})})})
-    console.log("Part 2: ", Object.values(stars).filter(d => d.length == 2).reduce((a,b)=>a+(b[0]*b[1]),0))
+    console.log("Part two: ", Object.values(stars).filter(d => d.length == 2).reduce((a,b)=>a+(b[0]*b[1]),0))
 });
